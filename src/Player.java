@@ -15,28 +15,25 @@ public class Player {
     public String getPlayerName() {
         return playerName;
     }
-
     public Card getPlayerCard(int c){
         return playerHand.get(c);
     }
-
     public void drawPlayerCard(Card card){
         playerHand.add(card);
     }
-
     public void playerTurn(Game game){
         // It is used to state every action during the player turn
-        int cardHandNum;
+        int cardInHandNum;
         boolean nextPlayer = false;
         String recentCardDesc;
         if(game.recentCardPlayed() && !(game.playerGetAnotherTurn(this))){
             if(game.getRecentCard() instanceof Mineral){
                 recentCardDesc = "\nRecent card = Name: " + game.getRecentCard().getCardName() + "  " +
                         "Hardness: " + ((Mineral) game.getRecentCard()).getCardHardness() + "  " +
-                        "Specific Gravity: " + ((Mineral) game.getRecentCard()).getCardSpecGravity() + "  " +
+                        "Specific Gravity: " + ((Mineral) game.getRecentCard()).getCardSpecGrav() + "  " +
                         "Cleavage: " + ((Mineral) game.getRecentCard()).getCardCleavage() + "  " +
-                        "Crystal Abundance: " + ((Mineral) game.getRecentCard()).getCardCrystalAbundance() + "  " +
-                        "Economic Value: " + ((Mineral) game.getRecentCard()).getCardEconomicValue() + "\n"; // The recent card description of the Mineral card
+                        "Crystal Abundance: " + ((Mineral) game.getRecentCard()).getCardCrystAbund() + "  " +
+                        "Economic Value: " + ((Mineral) game.getRecentCard()).getCardEcoValue() + "\n"; // The recent card description of the Mineral card
             }
             else{
                 recentCardDesc = "\nThe recent player play the " + ((SuperTrumps) game.getRecentCard()).getCardName() + " card" + "\n"; // The recent card description of the Supertrumps card
@@ -64,12 +61,12 @@ public class Player {
             }
             else{
                 try {
-                    cardHandNum = Integer.parseInt(playerChoice); // Changing the input into int from String
-                    Card cardPlayed = getPlayerCard(cardHandNum); // Used for trying to get the card played
+                    cardInHandNum = Integer.parseInt(playerChoice); // Changing the input into int from String
+                    Card cardPlayed = getPlayerCard(cardInHandNum); // Used for trying to get the card played
                     boolean continueGame = game.gameCard(cardPlayed, this); // Trying to play the card
                     if(game.getGameMode().equals("CHOICE")){ // Decision when a player play a special supertrump card to allow player to freely choose the trump mode
                         game.putCardToGame(cardPlayed);
-                        playerHand.remove((cardHandNum));
+                        playerHand.remove((cardInHandNum));
                         gameStart(game);
                         game.setRecentPlayer(this.getPlayerName());
                         nextPlayer = true;
@@ -89,7 +86,7 @@ public class Player {
                         }
                         if(continueGame){
                             game.putCardToGame(cardPlayed);
-                            playerHand.remove((cardHandNum));
+                            playerHand.remove((cardInHandNum));
                             game.setRecentPlayer(this.getPlayerName());
                             nextPlayer = true;
                         }
@@ -98,7 +95,7 @@ public class Player {
                         if(continueGame){
                             // Used for the normal card play
                             game.putCardToGame(cardPlayed);
-                            playerHand.remove((cardHandNum));
+                            playerHand.remove((cardInHandNum));
                             game.setRecentPlayer(this.getPlayerName());
                             nextPlayer = true;
                         }
@@ -115,8 +112,6 @@ public class Player {
             playerLeft(game);
         }
     }
-
-
     public String showCardInHand(){
         // Used for showing the cards in each players' hand
         String handCard = "";
@@ -129,10 +124,10 @@ public class Player {
                 cardDesc = "No: " + cardNum + "  " +
                         "Name: " + cards.getCardName() + "  " +
                         "Hardness: " + ((Mineral) cards).getCardHardness() + "  " +
-                        "Specific Gravity: " + ((Mineral) cards).getCardSpecGravity() + "  " +
+                        "Specific Gravity: " + ((Mineral) cards).getCardSpecGrav() + "  " +
                         "Cleavage: " + ((Mineral) cards).getCardCleavage() + "  " +
-                        "Crystal Abundance: " + ((Mineral) cards).getCardCrystalAbundance() + "  " +
-                        "Economic Value: " + ((Mineral) cards).getCardEconomicValue() + "\n";
+                        "Crystal Abundance: " + ((Mineral) cards).getCardCrystAbund() + "  " +
+                        "Economic Value: " + ((Mineral) cards).getCardEcoValue() + "\n";
             }
             else{
                 // Description of the Supertrump card

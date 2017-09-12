@@ -1,26 +1,26 @@
 public class Mineral extends Card{
 
     private float cardHardness;
-    private float cardSpecGravity;
+    private float cardSpecGrav;
     private String cardCleavage;
     private int cardCleavageScore;
-    private String cardCrystalAbundance;
-    private int cardCrystalAbundanceScore;
-    private String cardEconomicValue;
-    private int cardEconomicValueScore;
+    private String cardCrystAbund;
+    private int cardCrystAbundScore;
+    private String cardEcoValue;
+    private int cardEcoValueScore;
 
-    Mineral(String n, float hardness, float specificGravity, String cleavage, String crystalAbundance, String economicValue)
+    Mineral(String n, float hardness, float specificGravity, String cleavage, String crystalAbundance, String ecoValue)
     {
         //Constructor of the Mineral card/ non Supertrump card
         super(n);
         cardHardness = hardness;
-        cardSpecGravity = specificGravity;
+        cardSpecGrav = specificGravity;
         cardCleavage = cleavage;
-        cardCrystalAbundance = crystalAbundance;
-        cardEconomicValue = economicValue;
+        cardCrystAbund = crystalAbundance;
+        cardEcoValue = ecoValue;
         cardCleavageScore = convertCleavageScore();
-        cardCrystalAbundanceScore = convertAbundanceScore();
-        cardEconomicValueScore = convertEconomicScore();
+        cardCrystAbundScore = convertAbundanceScore();
+        cardEcoValueScore = convertEconomicScore();
 
     }
 
@@ -28,25 +28,25 @@ public class Mineral extends Card{
         return cardCleavageScore;
     }
     public int getCardCrystalAbundanceScore() {
-        return cardCrystalAbundanceScore;
+        return cardCrystAbundScore;
     }
     public int getCardEconomicValueScore() {
-        return cardEconomicValueScore;
+        return cardEcoValueScore;
     }
     public float getCardHardness() {
         return cardHardness;
     }
-    public float getCardSpecGravity() {
-        return cardSpecGravity;
+    public float getCardSpecGrav() {
+        return cardSpecGrav;
     }
     public String getCardCleavage() {
         return cardCleavage;
     }
-    public String getCardCrystalAbundance() {
-        return cardCrystalAbundance;
+    public String getCardCrystAbund() {
+        return cardCrystAbund;
     }
-    public String getCardEconomicValue() {
-        return cardEconomicValue;
+    public String getCardEcoValue() {
+        return cardEcoValue;
     }
     public int convertCleavageScore(){
         int cleavageScore = 0;
@@ -102,7 +102,7 @@ public class Mineral extends Card{
 
     public int convertAbundanceScore(){
         int abundanceScore = 0;
-        String a = getCardCrystalAbundance();
+        String a = getCardCrystAbund();
         if (a.equals("ultratrace")){
             abundanceScore = 1;
         }
@@ -126,7 +126,7 @@ public class Mineral extends Card{
 
     public int convertEconomicScore(){
         int economicScore = 0;
-        String e = getCardEconomicValue();
+        String e = getCardEcoValue();
         if (e.equals("trivial")){
             economicScore = 1;
         }

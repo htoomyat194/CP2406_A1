@@ -5,7 +5,7 @@ public class SuperTrumps extends Card{
         super (n);
     }
 
-    public String cardEffect() {
+    public String cardEff() {
         // Useful for setting up the game mode based on the Supertrump card name
         String effect = "";
         String n = getCardName();

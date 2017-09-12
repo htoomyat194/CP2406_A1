@@ -111,7 +111,7 @@ public class Game {
         int difference = 0;
         if(cardUsed.size() == 0 || this.playerGetAnotherTurn(play)) {
             if (card instanceof SuperTrumps) {
-                gameMode = ((SuperTrumps) card).cardEffect();
+                gameMode = ((SuperTrumps) card).cardEff();
             }
             higherScore = true;
         }
@@ -125,8 +125,8 @@ public class Game {
                         difference = now.compareTo(prev);
                     }
                     else if (gameMode.equals("SPECGRAV")){
-                        Float now = new Float(((Mineral) card).getCardSpecGravity());
-                        Float prev = new Float(((Mineral) getRecentCard()).getCardSpecGravity());
+                        Float now = new Float(((Mineral) card).getCardSpecGrav());
+                        Float prev = new Float(((Mineral) getRecentCard()).getCardSpecGrav());
                         difference = now.compareTo(prev);
                     }
                     else if (gameMode.equals("ECO")){
@@ -156,7 +156,7 @@ public class Game {
                 }
             }
             else {
-                setGameMode(((SuperTrumps) card).cardEffect());
+                setGameMode(((SuperTrumps) card).cardEff());
                 higherScore = true;
             }
         }
