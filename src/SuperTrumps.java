@@ -1,12 +1,12 @@
 public class SuperTrumps extends Card{
 
     SuperTrumps (String n){
-        //Constructor of Supertrump card
+        //SuperTrumps Card Constructor
         super (n);
     }
 
     public String cardEff() {
-        // Useful for setting up the game mode based on the Supertrump card name
+        // For setting up the game mode based on the Supertrump card name
         String effect = "";
         String n = getCardName();
         if (n.equals("The Mineralogist")){
